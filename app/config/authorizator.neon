@@ -1,0 +1,12 @@
+services:
+	authorizator:
+		class: Nette\Security\Permission
+		setup:
+			- addRole('admin')
+			- addRole('guest')
+			- addRole('user')
+			- addResource('admin')
+			- addResource('user')
+			- allow('admin', 'admin')
+			- allow(['user', 'admin'], 'user')
+

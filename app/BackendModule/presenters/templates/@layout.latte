@@ -1,0 +1,13 @@
+{capture $content}
+{include content}
+{/capture}
+
+
+{capture $footer}
+	Copyright © 2014-2015.
+	Github - <a href="https://github.com/Kollarovic/Admin">Component</a>.
+	Github - <a href="https://github.com/Kollarovic/AdminDemo">Demo</a>.
+{/capture}
+
+
+{control adminControl content => $content, footer => $footer}

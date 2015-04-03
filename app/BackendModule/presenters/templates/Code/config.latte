@@ -1,0 +1,65 @@
+{block content}
+
+
+<pre class="code jush">
+
+extensions:
+	navigation: Kollarovic\Navigation\DI\Extension
+	admin: Kollarovic\Admin\DI\Extension
+
+
+admin:
+	skin: red
+
+
+navigation:
+	admin:
+		label: Homepage
+		link: Homepage:default
+		icon: fa-dashboard
+		items:
+			dashboard:
+				label: Homepage
+				link: Homepage:default
+				icon: fa-dashboard
+
+			page:
+				label: Pages
+				value: [@manager, count]
+				link: Page:default
+				icon: fa-file-text-o
+				items:
+					update:
+						label: Update
+						link: Page:update
+						icon: fa-pencil
+						active: FALSE
+					create:
+						label: Create
+						link: Page:create
+						icon: fa-plus-circle
+						active: FALSE
+
+			user:
+				label: Users
+				value: [@manager, count]
+				link: User:default
+				icon: fa-users
+				items:
+					update:
+						label: Update
+						link: User:update
+						icon: fa-pencil
+						active: FALSE
+					create:
+						label: Create
+						link: User:create
+						icon: fa-plus-circle
+						active: FALSE
+
+			setting:
+				label: Setting
+				link: Setting:update
+				icon: fa-wrench
+
+</pre>

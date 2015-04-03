@@ -1,0 +1,12 @@
+{block content}
+
+
+<pre class="code jush-latte" n:syntax="off">
+
+{capture $content}
+{include content}
+{/capture}
+
+{control adminControl content=>$content}
+
+</pre>

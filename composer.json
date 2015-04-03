@@ -1,0 +1,13 @@
+{
+	"name": "kollarovic/admin-demo",
+	"require": {
+		"php": ">= 5.3.7",
+		"nette/nette": "~2.3.0",
+		"dg/adminer-custom": "~1.6",
+		"kollarovic/admin": "dev-master",
+		"o5/grido": "2.0.3"
+	},
+	"require-dev": {
+		"nette/tester": "~1.3"
+	}
+}

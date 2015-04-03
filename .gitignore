@@ -1,0 +1,13 @@
+log/*
+temp/*
+vendor/*
+!vendor/others
+www/webtemp/*
+
+.DS_Store
+!.gitignore
+!.htaccess
+!web.config
+app/config/config.local.neon
+composer.lock
+.idea

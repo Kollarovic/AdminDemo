@@ -1,0 +1,40 @@
+{block content}
+
+
+<pre class="code jush-php">
+
+namespace App\BackendModule\Presenters;
+
+use Nette\Application\UI\Presenter;
+use Kollarovic\Admin\IAdminControlFactory;
+
+
+abstract class BasePresenter extends Presenter
+{
+
+	/** @var IAdminControlFactory @inject */
+	public $adminControlFactory;
+
+	protected function startup()
+	{
+		parent::startup();
+		if (!$this->user->isLoggedIn()) {
+			$this->redirect('Sign:in', array('backlink' => $this->storeRequest()));
+		}
+	}
+
+
+	protected function createComponentAdminControl()
+	{
+		$adminControl = $this->adminControlFactory->create();
+		$adminControl->setUserName($this->user->identity->name)->setUserImage('images/user.png');
+		$adminControl->setProfileUrl($this->link('User:update', ['id' => $this->user->id]));
+		$adminControl->onLoggedOut[] = function() {
+			$this->redirect('Sign:in');
+		};
+		return $adminControl;
+	}
+
+}
+
+</pre>
