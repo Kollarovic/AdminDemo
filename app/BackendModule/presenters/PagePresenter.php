@@ -2,8 +2,8 @@
 
 namespace App\BackendModule\Presenters;
 
-use App\BackendModule\Form\PageFormFactory;
-use App\BackendModule\Grid\PageGridFactory;
+use App\BackendModule\Forms\PageFormFactory;
+use App\BackendModule\Grids\PageGridFactory;
 use Nette\InvalidArgumentException;
 
 

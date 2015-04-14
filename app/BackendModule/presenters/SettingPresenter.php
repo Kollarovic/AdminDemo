@@ -2,7 +2,7 @@
 
 namespace App\BackendModule\Presenters;
 
-use App\BackendModule\Form\SettingFormFactory;
+use App\BackendModule\Forms\SettingFormFactory;
 
 
 class SettingPresenter extends BasePresenter

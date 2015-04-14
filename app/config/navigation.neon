@@ -1,0 +1,97 @@
+navigation:
+	admin:
+		label: Dashboard
+		link: Homepage:default
+		icon: fa-dashboard
+		items:
+			dashboard:
+				label: Dashboard
+				link: Homepage:default
+				icon: fa-dashboard
+
+			page:
+				label: Pages
+				value: [@manager, count]
+				link: Page:default
+				icon: fa-file-text-o
+				items:
+					update:
+						label: Update
+						link: Page:update
+						icon: fa-pencil
+						active: FALSE
+					create:
+						label: Create
+						link: Page:create
+						icon: fa-plus-circle
+						active: FALSE
+
+			product:
+				label: Products
+				value: [@manager, count]
+				link: Product:default
+				icon: fa-shopping-cart
+				items:
+					update:
+						label: Update
+						link: Product:update
+						icon: fa-pencil
+						active: FALSE
+					create:
+						label: Create
+						link: Product:create
+						icon: fa-plus-circle
+						active: FALSE
+
+			user:
+				label: Users
+				value: [@manager, count]
+				link: User:default
+				icon: fa-users
+				items:
+					update:
+						label: Update
+						link: User:update
+						icon: fa-pencil
+						active: FALSE
+					create:
+						label: Create
+						link: User:create
+						icon: fa-plus-circle
+						active: FALSE
+
+			setting:
+				label: Setting
+				link: Setting:update
+				icon: fa-wrench
+
+			code:
+				label: Code
+				value: 6
+				link: Code:default
+				icon: fa-file-code-o
+				items:
+					composer:
+						label: Composer.json
+						link: Code:composer
+						icon: fa-download
+					config:
+						label: Config.neon
+						link: Code:config
+						icon: fa-wrench
+					presenter:
+						label: BasePresenter.php
+						link: Code:presenter
+						icon: fa-file-code-o
+					layout:
+						label: Layout.latte
+						link: Code:layout
+						icon: fa-file-code-o
+					signpresenter:
+						label: SignPresenter.php
+						link: Code:signpresenter
+						icon: fa-file-code-o
+					in:
+						label: Sign/In.latte
+						link: Code:in
+						icon: fa-file-code-o

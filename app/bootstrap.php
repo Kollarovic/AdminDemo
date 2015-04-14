@@ -18,6 +18,6 @@ $configurator->addConfig(__DIR__ . '/config/config.local.neon');
 
 $container = $configurator->createContainer();
 
-\App\BackendModule\Grid\Boolean::register();
+\App\BackendModule\Grids\Boolean::register();
 
 return $container;

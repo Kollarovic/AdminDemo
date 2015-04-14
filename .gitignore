@@ -3,6 +3,7 @@ temp/*
 vendor/*
 !vendor/others
 www/webtemp/*
+www/images/thumbs/*
 
 .DS_Store
 !.gitignore

@@ -1,0 +1,26 @@
+{block content}
+
+<div class="row">
+
+{foreach $products as $product}
+
+<div class="col-sm-4">
+	<div class="product clearfix small">
+		<h3><a title="{$product->name}" n:href="Product:default $product->id">{$product->name}</a></h3>
+		<a n:href="Product:default $product->id" class="thumbnail pull-left" title="{$product->name}">
+			<img src="{$product->image|thumbnail: 110, 110}" alt="{$product->name}">
+		</a>
+		<span class="text-muted">price:</span><br>
+		<strong class="price">{$product->price|price}</strong><br>
+		<span class="text-success">In Stock</span><br>
+		<a n:href="Cart:add $product->id" class="btn btn-danger btn-xs"><i class="fa fa-shopping-cart"> Add to Cart</i></a>
+		<p class="clear">
+			{$product->description|striptags|truncate:140}
+		</p>
+	</div>
+</div>
+
+{/foreach}
+
+</div>
+

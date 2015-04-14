@@ -4,17 +4,20 @@
 #
 
 includes:
+	- navigation.neon
 	- authorizator.neon
+	- webloader.neon
 
 parameters:
-
+	options:
+		Color: [black: black, white: white]
 
 php:
 	date.timezone: Europe/Prague
 
 
 application:
-	errorPresenter: Error
+	errorPresenter: Frontend:Error
 	mapping:
 		*: App\*Module\Presenters\*Presenter
 
@@ -26,23 +29,37 @@ session:
 extensions:
 	navigation: Kollarovic\Navigation\DI\Extension
 	admin: Kollarovic\Admin\DI\Extension
+	cart: Kollarovic\ShoppingCart\DI\Extension
+	thumbnail: Kollarovic\Thumbnail\DI\Extension
+	webloader: WebLoader\Nette\Extension
 
+cart:
+	columns:
+		price: yes
 
 services:
 	- App\Model\UserManager
 	router: App\RouterFactory::createRouter
 
 	# forms
-	- App\BackendModule\Form\UserFormFactory(@authorizator::getRoles())
-	- App\BackendModule\Form\PageFormFactory
-	- App\BackendModule\Form\SettingFormFactory
+	- App\BackendModule\Forms\UserFormFactory(@authorizator::getRoles())
+	- App\BackendModule\Forms\PageFormFactory
+	- App\BackendModule\Forms\SettingFormFactory
+	- App\BackendModule\Forms\ProductFormFactory
+	- App\FrontendModule\Forms\CartFormFactory(%options%)
+	- App\FrontendModule\Form\OrderFormFactory
 
 	#grids
-	- App\BackendModule\Grid\UserGridFactory
-	- App\BackendModule\Grid\PageGridFactory
+	- App\BackendModule\Grids\UserGridFactory
+	- App\BackendModule\Grids\PageGridFactory
+	- App\BackendModule\Grids\ProductGridFactory
+
+	#facades
+	- App\Model\Facades\CartFacade
 
 	manager: App\Model\Manager
 	- App\Model\SettingManager
+	- App\BackendModule\Forms\UploadManager(%wwwDir%, 'images/upload')
 
 
 admin:
@@ -56,91 +73,10 @@ admin:
 		- %wwwDir%/js/grido.ajax.js
 		- %wwwDir%/js/typeahead.min.js
 		- %wwwDir%/js/admin.js
-		- %wwwDir%/css/style.css
+		- %wwwDir%/css/admin.css
 		- %wwwDir%/css/typeahead.css
 		- https://cdn.ckeditor.com/4.4.6/standard/ckeditor.js
 		- https://cdn.ckeditor.com/4.4.6/standard/adapters/jquery.js
 		- http://jush.sourceforge.net/jush.js
 	login:
 		pageMsg: "email: demo@demo.com pass.: demo12"
-
-navigation:
-	admin:
-		label: Dashboard
-		link: Homepage:default
-		icon: fa-dashboard
-		items:
-			dashboard:
-				label: Dashboard
-				link: Homepage:default
-				icon: fa-dashboard
-
-			page:
-				label: Pages
-				value: [@manager, count]
-				link: Page:default
-				icon: fa-file-text-o
-				items:
-					update:
-						label: Update
-						link: Page:update
-						icon: fa-pencil
-						active: FALSE
-					create:
-						label: Create
-						link: Page:create
-						icon: fa-plus-circle
-						active: FALSE
-
-			user:
-				label: Users
-				value: [@manager, count]
-				link: User:default
-				icon: fa-users
-				items:
-					update:
-						label: Update
-						link: User:update
-						icon: fa-pencil
-						active: FALSE
-					create:
-						label: Create
-						link: User:create
-						icon: fa-plus-circle
-						active: FALSE
-
-			setting:
-				label: Setting
-				link: Setting:update
-				icon: fa-wrench
-
-			code:
-				label: Code
-				value: 6
-				link: Code:default
-				icon: fa-file-code-o
-				items:
-					composer:
-						label: Composer.json
-						link: Code:composer
-						icon: fa-download
-					config:
-						label: Config.neon
-						link: Code:config
-						icon: fa-wrench
-					presenter:
-						label: BasePresenter.php
-						link: Code:presenter
-						icon: fa-file-code-o
-					layout:
-						label: Layout.latte
-						link: Code:layout
-						icon: fa-file-code-o
-					signpresenter:
-						label: SignPresenter.php
-						link: Code:signpresenter
-						icon: fa-file-code-o
-					in:
-						label: Sign/In.latte
-						link: Code:in
-						icon: fa-file-code-o

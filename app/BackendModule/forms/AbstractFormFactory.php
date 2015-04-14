@@ -1,6 +1,6 @@
 <?php
 
-namespace App\BackendModule\Form;
+namespace App\BackendModule\Forms;
 
 use Nette\Object;
 use Nette\Database\Context;

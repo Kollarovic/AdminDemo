@@ -1,6 +1,6 @@
 <?php
 
-namespace App\BackendModule\Form;
+namespace App\BackendModule\Forms;
 
 use Nette\Database\Context;
 use Kollarovic\Admin\Form\IBaseFormFactory;

@@ -1,0 +1,18 @@
+{block content}
+
+<h1 n:block="title">{$product->name}</h1>
+
+<div class="row">
+	<div class="col-sm-6">
+		<a href="{$basePath}/{$product->image}" class="thumbnail" rel="product">
+			<img src="{$product->image|thumbnail: 240, 240}" alt="{$product->name}">
+		</a>
+	</div>
+	<div class="col-sm-6">
+		{control cartForm}
+	</div>
+</div>
+
+<p>
+	{$product->description|noescape}
+</p>

@@ -5,7 +5,9 @@
 		"nette/nette": "~2.3.0",
 		"dg/adminer-custom": "~1.6",
 		"kollarovic/admin": "dev-master",
-		"o5/grido": "2.0.3"
+		"kollarovic/shopping-cart": "dev-master",
+		"o5/grido": "2.0.3",
+		"oyejorge/less.php": "~1.5"
 	},
 	"require-dev": {
 		"nette/tester": "~1.3"

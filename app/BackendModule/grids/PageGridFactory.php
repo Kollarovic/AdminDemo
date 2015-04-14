@@ -1,6 +1,6 @@
 <?php
 
-namespace App\BackendModule\Grid;
+namespace App\BackendModule\Grids;
 
 use Grido\Grid;
 use Nette\Utils\Strings;
