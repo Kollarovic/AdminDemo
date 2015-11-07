@@ -1,6 +1,4 @@
--- Adminer 4.2.0 MySQL dump
-
-SET NAMES utf8mb4;
+SET NAMES utf8;
 SET time_zone = '+00:00';
 SET foreign_key_checks = 0;
 SET sql_mode = 'NO_AUTO_VALUE_ON_ZERO';
@@ -59,6 +57,6 @@ CREATE TABLE `user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 INSERT INTO `user` (`id`, `name`, `email`, `password`, `role`) VALUES
-(9,	'John Doe',	'admin@admin.sk',	'$2y$10$jy5A0F.5TuA1BO09R0RcFuSdtVZ.f4tUy.1EWxSBt4rjIQ9GFUAbi',	'admin');
+(9,	'John Doe',	'demo@demo.com',	'$2y$10$aIyy1J9V4rrzCBHmLfKi6e7Jh5VBTCpGiGY5s4KBeHtKpAKV7q6LO',	'admin');
 
--- 2015-04-14 07:50:03
+-- 2015-11-07 12:25:47
