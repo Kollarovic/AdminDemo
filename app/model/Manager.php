@@ -21,7 +21,7 @@ class Manager
 
 	public function count(Item $item)
 	{
-		return $this->database->table($item->name)->count();
+		return $this->database->table($item->getName())->count();
 	}
 
 }

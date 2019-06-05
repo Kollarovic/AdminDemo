@@ -80,3 +80,5 @@ admin:
 		- http://jush.sourceforge.net/jush.js
 	login:
 		pageMsg: "email: demo@demo.com pass.: demo12"
+
+

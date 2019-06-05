@@ -29,7 +29,7 @@
 			</div>
 			<div id="navbar" class="collapse navbar-collapse">
 				<ul class="nav navbar-nav navbar-right">
-					<li><a n:href="Cart:default">Shopping Cart - {$cart->quantity} - {$cart->total|price}</a></li>
+					<li><a n:href="Cart:default">Shopping Cart - {$cart->getQuantity()} - {$cart->getTotal()|price}</a></li>
 				</ul>
 			</div>
 		</div>
