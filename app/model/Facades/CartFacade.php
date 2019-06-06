@@ -4,11 +4,10 @@ namespace App\Model\Facades;
 
 use Nette\Database\Context;
 use Nette\InvalidArgumentException;
-use Nette\Object;
 use Kollarovic\ShoppingCart\Cart;
 
 
-class CartFacade extends Object
+class CartFacade
 {
 
 	/** @var Context */

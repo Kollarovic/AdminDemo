@@ -2,27 +2,14 @@
 
 namespace App\BackendModule\Grids;
 
-use Nette\Object;
 use Nette\Database\Context;
 use Nette\Localization\ITranslator;
 use Grido\Grid;
 use Grido\Components\Filters\Filter;
 
 
-/**
- * @method string getTable()
- * @method ITranslator getTranslator()
- * @method Context getDatabase()
- * @method AbstractGridFactory setTable($table)
- */
-abstract class AbstractGridFactory extends Object
+abstract class AbstractGridFactory
 {
-
-	/** @var array */
-	public $onPreDelete;
-
-	/** @var array */
-	public $onPostDelete;
 
 	/** @var string */
 	protected $table;
@@ -57,9 +44,7 @@ abstract class AbstractGridFactory extends Object
 
 	public function delete($id)
 	{
-		$this->onPreDelete($id);
 		$this->getSelection()->where('id', $id)->delete();
-		$this->onPostDelete($id);
 	}
 
 

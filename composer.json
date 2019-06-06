@@ -2,7 +2,7 @@
 	"name": "kollarovic/admin-demo",
 	"require": {
 		"php": ">=5.4.0",
-		"nette/nette": "~2.3.0",
+		"nette/nette": "~2.3",
 		"dg/adminer-custom": "~1.6",
 		"kollarovic/admin": "^2.0",
 		"kollarovic/shopping-cart": "^2.0",

@@ -2,35 +2,30 @@
 
 namespace App\BackendModule\Forms;
 
-use Nette\Object;
+use Nette\Database\Context;
 use Nette\Forms\Controls\BaseControl;
-use Nette\Database\Table\Selection;
 
 
-class UniqueValidator extends Object
+class UniqueValidator
 {
 
-	/** @var Selection */
-	private $selection;
-	
-	/** @var int */
-	private $id;
+	/** @var Context */
+	private $database;
 
 
-	function __construct(Selection $selection, $id = NULL)
+	function __construct(Context $database)
 	{
-		$this->selection = $selection;
-		$this->id = $id;
+		$this->database = $database;
 	}
 
 
-	public function validate(BaseControl $control)
+	public function validate(BaseControl $control, $params)
 	{
 		$condition[$control->name] = $control->value;
-		if ($this->id) {
-			$condition['id!='] = $this->id;
+		if (isset($params[1])) {
+			$condition['id!='] = $params[1];
 		}
-		return $this->selection->where($condition)->count() ? FALSE : TRUE;
+		return $this->database->table($params[0])->where($condition)->count() ? false : true;
 	}
 
 }

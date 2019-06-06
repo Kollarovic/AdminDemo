@@ -29,7 +29,7 @@ class ProductGridFactory extends AbstractGridFactory
 			->setSortable()->setFilterSelect(['' => '', 1 => 'Yes', 0 => 'No']);
 
 		$grid->addActionHref('update', 'Update')->setIcon('pencil');
-		$grid->addActionEvent('delete', 'Delete', $this->delete)->setIcon('trash-o')
+		$grid->addActionEvent('delete', 'Delete', [$this, 'delete'])->setIcon('trash-o')
 			->setConfirm(function($item) {
 			return "Are you sure you want to delete {$item->name}?";
 		});

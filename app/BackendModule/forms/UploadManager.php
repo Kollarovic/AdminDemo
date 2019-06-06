@@ -3,14 +3,9 @@
 namespace App\BackendModule\Forms;
 
 use Nette\Http\FileUpload;
-use Nette\Object;
 
 
-/**
- * @method UploadManager setWwwDir(string $wwwDir)
- * @method UploadManager setPath(string $path)
- */
-class UploadManager extends Object {
+class UploadManager {
 
 
 	/** @var string */

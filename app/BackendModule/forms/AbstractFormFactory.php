@@ -2,31 +2,16 @@
 
 namespace App\BackendModule\Forms;
 
-use Nette\Object;
 use Nette\Database\Context;
 use Kollarovic\Admin\Form\IBaseFormFactory;
 use Nette\Database\Table\ActiveRow;
 use Nette\Forms\Form;
 use Nette\InvalidArgumentException;
+use Nette\Utils\ArrayHash;
 
 
-/**
- * @method string getTable()
- * @method Context getDatabase()
- * @method IBaseFormFactory getBaseFormFactory()
- * @method ActiveRow getRow()
- * @method int getId()
- *
- * @method AbstractFormFactory setTable($table)
- */
-abstract class AbstractFormFactory extends Object
+abstract class AbstractFormFactory
 {
-
-	/** @var array */
-	public $onPreSave;
-
-	/** @var array */
-	public $onPostSave;
 
 	/** @var string */
 	protected $table;
@@ -63,24 +48,27 @@ abstract class AbstractFormFactory extends Object
 			}
 			$form->setValues($this->row);
 		}
-		$form->onSuccess[] = $this->process;
+		$form->onSuccess[] = [$this, 'process'];
 		return $form;
+	}
+
+
+	public function getId()
+	{
+		return $this->id;
 	}
 
 
 	abstract protected function setupForm(Form $form);
 
 
-	public function process(Form $form)
+	public function process(Form $form, ArrayHash $values)
 	{
-		$values = $form->values;
-		$this->onPreSave($values);
 		if ($this->row) {
 			$this->row->update($values);
 		} else {
 			$this->row = $this->database->table($this->table)->insert($values);
 		}
-		$this->onPostSave($this->row);
 	}
 
 

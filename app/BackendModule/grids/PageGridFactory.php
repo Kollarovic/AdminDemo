@@ -20,14 +20,14 @@ class PageGridFactory extends AbstractGridFactory
 			->setSortable()->setFilterText()->setSuggestion();
 
 		$grid->addColumnText('content', 'Content')
-			->setCustomRender($this->renderContent)
+			->setCustomRender([$this, 'renderContent'])
 			->setSortable()->setFilterText();
 
 		$grid->addColumnBoolean('active', 'Active')
 			->setSortable()->setFilterSelect(['' => '', 1 => 'Yes', 0 => 'No']);
 
 		$grid->addActionHref('update', 'Update')->setIcon('pencil');
-		$grid->addActionEvent('delete', 'Delete', $this->delete)->setIcon('trash-o')
+		$grid->addActionEvent('delete', 'Delete', [$this, 'delete'])->setIcon('trash-o')
 			->setConfirm(function($item) {
 			return "Are you sure you want to delete {$item->name}?";
 		});

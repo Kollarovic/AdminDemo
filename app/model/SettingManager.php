@@ -6,7 +6,7 @@ use Nette\Object;
 use Nette\Database\Context;
 
 
-class SettingManager extends Object implements ISettingManager
+class SettingManager implements ISettingManager
 {
 
 	/** @var string */

@@ -23,7 +23,7 @@ class UserGridFactory extends AbstractGridFactory
 			->setSortable()->setFilterText()->setSuggestion();
 
 		$grid->addActionHref('update', 'Update')->setIcon('pencil');
-		$grid->addActionEvent('delete', 'Delete', $this->delete)->setIcon('trash-o')
+		$grid->addActionEvent('delete', 'Delete', [$this, 'delete'])->setIcon('trash-o')
 			->setConfirm(function($item) {
 			return "Are you sure you want to delete {$item->name}?";
 		});

@@ -2,17 +2,12 @@
 
 namespace App\BackendModule\Forms;
 
-use Nette\Object;
 use Kollarovic\Admin\Form\IBaseFormFactory;
 use App\Model\ISettingManager;
 use Nette\Forms\Form;
 
 
-/**
- * @method array getSkins()
- * @method SettingFormFactory setSkins(array $skins)
- */
-class SettingFormFactory extends Object
+class SettingFormFactory
 {
 
 	/** @var IBaseFormFactory */
@@ -42,11 +37,11 @@ class SettingFormFactory extends Object
 	public function create()
 	{
 		$form = $this->baseFormFactory->create();
-		$form->addText('email', 'Email')->setType('email')->addRule(Form::EMAIL);
+		$form->addText('email', 'Email')->setType('email')->setRequired()->addRule(Form::EMAIL);
 		$form->addRadioList('skin', 'Skin', $this->skins)->setRequired();
 		$form->setValues($this->setting->getValues());
 		$form->addSubmit('submit', 'Save');
-		$form->onSuccess[] = $this->process;
+		$form->onSuccess[] = [$this, 'process'];
 		return $form;
 	}
 

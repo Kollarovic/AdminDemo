@@ -48,6 +48,7 @@ services:
 	- App\BackendModule\Forms\ProductFormFactory
 	- App\FrontendModule\Forms\CartFormFactory(%options%)
 	- App\FrontendModule\Form\OrderFormFactory
+	- App\BackendModule\Forms\UniqueValidator
 
 	#grids
 	- App\BackendModule\Grids\UserGridFactory

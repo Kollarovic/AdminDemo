@@ -2,13 +2,12 @@
 
 namespace App\FrontendModule\Forms;
 
-use Nette\Object;
 use App\Model\Facades\CartFacade;
 use Kollarovic\Admin\Form\IBaseFormFactory;
 use Nette\Forms\Form;
 
 
-class CartFormFactory extends Object
+class CartFormFactory
 {
 
 
@@ -45,7 +44,7 @@ class CartFormFactory extends Object
 		}
 
 		$form->addSubmit('submit', 'Add to Cart');
-		$form->onSuccess[] = $this->process;
+		$form->onSuccess[] = [$this, 'process'];
 		return $form;
 	}
 

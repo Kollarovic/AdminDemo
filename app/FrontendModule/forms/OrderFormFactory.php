@@ -2,13 +2,12 @@
 
 namespace App\FrontendModule\Form;
 
-use Nette\Object;
 use Kollarovic\Admin\Form\IBaseFormFactory;
 use Nette\Application\UI\Form;
 use App\Model\Facades\CartFacade;
 
 
-class OrderFormFactory extends  Object
+class OrderFormFactory
 {
 
 
@@ -40,7 +39,7 @@ class OrderFormFactory extends  Object
 		$form->addGroup('Description');
 		$form->addTextArea('description', 'Description', NULL, 5);
 		$form->addSubmit('submit', 'Submit');
-		$form->onSuccess[] = $this->process;
+		$form->onSuccess[] = [$this, 'process'];
 		return $form;
 	}
 

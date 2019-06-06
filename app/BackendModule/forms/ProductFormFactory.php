@@ -35,11 +35,10 @@ class ProductFormFactory extends AbstractFormFactory
 		$form->addText('vat', 'Vat Rate')->setType('number')->setRequired();
 		$form->addCheckbox('active', 'Active');
 		$form->addSubmit('submit', 'Submit');
-		$this->onPreSave[] = $this->saveImage;
 	}
 
 
-	public function saveImage(ArrayHash $values)
+	public function process(Form $form, ArrayHash $values)
 	{
 		$image = $this->uploadManager->save($values->image);
 		if ($image) {
@@ -47,6 +46,7 @@ class ProductFormFactory extends AbstractFormFactory
 		} else {
 			unset($values->image);
 		}
+		parent::process($form, $values);
 	}
 
 }
